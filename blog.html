@@ -1,0 +1,139 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Ucique - Blog</title>
+    <link rel="stylesheet" href="css/main.css">
+    <link rel="stylesheet" href="css/themes.css">
+    <link rel="stylesheet" href="css/animations.css">
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+</head>
+<body class="theme-light">
+    <div class="theme-switcher">
+        <button class="theme-btn" data-theme="light">☀️</button>
+        <button class="theme-btn" data-theme="dark">🌙</button>
+        <button class="theme-btn" data-theme="ocean">🌊</button>
+        <button class="theme-btn" data-theme="forest">🌲</button>
+    </div>
+
+    <nav class="navbar">
+        <div class="nav-container">
+            <div class="nav-logo">
+                <h1>Ucique</h1>
+            </div>
+            <div class="nav-links">
+                <a href="index.html" class="nav-link">Home</a>
+                <a href="blog.html" class="nav-link active">Blog</a>
+                <a href="forum.html" class="nav-link">Forum</a>
+                <a href="login.html" class="nav-link" id="loginLink">Login</a>
+                <a href="#" class="nav-link" id="logoutLink" style="display: none;">Logout</a>
+            </div>
+        </div>
+    </nav>
+
+    <main class="main-content">
+        <div class="container">
+            <div class="blog-header">
+                <h1 class="page-title">Blog</h1>
+                <p class="page-subtitle">Discover insightful articles and share your thoughts</p>
+                <button class="btn btn-primary" id="newArticleBtn" style="display: none;">New Article</button>
+            </div>
+
+            <div class="blog-filters">
+                <input type="text" id="searchArticles" placeholder="Search articles..." class="search-input">
+                <select id="categoryFilter" class="filter-select">
+                    <option value="">All Categories</option>
+                    <option value="technology">Technology</option>
+                    <option value="lifestyle">Lifestyle</option>
+                    <option value="science">Science</option>
+                    <option value="culture">Culture</option>
+                </select>
+            </div>
+
+            <div class="articles-container" id="articlesContainer">
+                <!-- Articles will be loaded here -->
+            </div>
+
+            <div class="load-more">
+                <button class="btn btn-secondary" id="loadMoreBtn">Load More Articles</button>
+            </div>
+        </div>
+    </main>
+
+    <!-- New Article Modal -->
+    <div class="modal" id="newArticleModal">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h2>Create New Article</h2>
+                <button class="modal-close" id="closeNewArticleModal">&times;</button>
+            </div>
+            <form id="newArticleForm">
+                <div class="form-group">
+                    <label for="articleTitle">Title</label>
+                    <input type="text" id="articleTitle" required>
+                </div>
+                <div class="form-group">
+                    <label for="articleCategory">Category</label>
+                    <select id="articleCategory" required>
+                        <option value="technology">Technology</option>
+                        <option value="lifestyle">Lifestyle</option>
+                        <option value="science">Science</option>
+                        <option value="culture">Culture</option>
+                    </select>
+                </div>
+                <div class="form-group">
+                    <label for="articleContent">Content</label>
+                    <textarea id="articleContent" rows="10" required></textarea>
+                </div>
+                <div class="form-actions">
+                    <button type="button" class="btn btn-secondary" id="cancelNewArticle">Cancel</button>
+                    <button type="submit" class="btn btn-primary">Publish Article</button>
+                </div>
+            </form>
+        </div>
+    </div>
+
+    <!-- Article View Modal -->
+    <div class="modal" id="articleModal">
+        <div class="modal-content modal-large">
+            <div class="modal-header">
+                <h2 id="modalArticleTitle"></h2>
+                <button class="modal-close" id="closeArticleModal">&times;</button>
+            </div>
+            <div class="modal-body">
+                <div class="article-meta">
+                    <span class="article-author" id="modalArticleAuthor"></span>
+                    <span class="article-date" id="modalArticleDate"></span>
+                    <span class="article-category" id="modalArticleCategory"></span>
+                </div>
+                <div class="article-content" id="modalArticleContent"></div>
+                
+                <div class="comments-section">
+                    <h3>Comments</h3>
+                    <div class="comments-container" id="commentsContainer"></div>
+                    
+                    <div class="comment-form" id="commentForm" style="display: none;">
+                        <h4>Add a Comment</h4>
+                        <form id="newCommentForm">
+                            <textarea id="commentContent" placeholder="Write your comment..." rows="3" required></textarea>
+                            <button type="submit" class="btn btn-primary">Post Comment</button>
+                        </form>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <footer class="footer">
+        <div class="container">
+            <p>&copy; 2024 Ucique. All rights reserved.</p>
+        </div>
+    </footer>
+
+    <script src="js/database.js"></script>
+    <script src="js/auth.js"></script>
+    <script src="js/theme.js"></script>
+    <script src="js/blog.js"></script>
+</body>
+</html>

@@ -1,0 +1,148 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Ucique - Forum</title>
+    <link rel="stylesheet" href="css/main.css">
+    <link rel="stylesheet" href="css/themes.css">
+    <link rel="stylesheet" href="css/animations.css">
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+</head>
+<body class="theme-light">
+    <div class="theme-switcher">
+        <button class="theme-btn" data-theme="light">☀️</button>
+        <button class="theme-btn" data-theme="dark">🌙</button>
+        <button class="theme-btn" data-theme="ocean">🌊</button>
+        <button class="theme-btn" data-theme="forest">🌲</button>
+    </div>
+
+    <nav class="navbar">
+        <div class="nav-container">
+            <div class="nav-logo">
+                <h1>Ucique</h1>
+            </div>
+            <div class="nav-links">
+                <a href="index.html" class="nav-link">Home</a>
+                <a href="blog.html" class="nav-link">Blog</a>
+                <a href="forum.html" class="nav-link active">Forum</a>
+                <a href="login.html" class="nav-link" id="loginLink">Login</a>
+                <a href="#" class="nav-link" id="logoutLink" style="display: none;">Logout</a>
+            </div>
+        </div>
+    </nav>
+
+    <main class="main-content">
+        <div class="container">
+            <div class="forum-header">
+                <h1 class="page-title">Forum</h1>
+                <p class="page-subtitle">Join discussions and connect with the community</p>
+                <button class="btn btn-primary" id="newThreadBtn" style="display: none;">New Thread</button>
+            </div>
+
+            <div class="forum-filters">
+                <input type="text" id="searchThreads" placeholder="Search threads..." class="search-input">
+                <select id="categoryFilter" class="filter-select">
+                    <option value="">All Categories</option>
+                    <option value="general">General Discussion</option>
+                    <option value="technology">Technology</option>
+                    <option value="lifestyle">Lifestyle</option>
+                    <option value="science">Science</option>
+                    <option value="culture">Culture</option>
+                    <option value="help">Help & Support</option>
+                </select>
+                <select id="sortFilter" class="filter-select">
+                    <option value="recent">Most Recent</option>
+                    <option value="popular">Most Popular</option>
+                    <option value="active">Most Active</option>
+                </select>
+            </div>
+
+            <div class="threads-container" id="threadsContainer">
+                <!-- Threads will be loaded here -->
+            </div>
+
+            <div class="load-more">
+                <button class="btn btn-secondary" id="loadMoreThreadsBtn">Load More Threads</button>
+            </div>
+        </div>
+    </main>
+
+    <!-- New Thread Modal -->
+    <div class="modal" id="newThreadModal">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h2>Create New Thread</h2>
+                <button class="modal-close" id="closeNewThreadModal">&times;</button>
+            </div>
+            <form id="newThreadForm">
+                <div class="form-group">
+                    <label for="threadTitle">Title</label>
+                    <input type="text" id="threadTitle" required>
+                </div>
+                <div class="form-group">
+                    <label for="threadCategory">Category</label>
+                    <select id="threadCategory" required>
+                        <option value="general">General Discussion</option>
+                        <option value="technology">Technology</option>
+                        <option value="lifestyle">Lifestyle</option>
+                        <option value="science">Science</option>
+                        <option value="culture">Culture</option>
+                        <option value="help">Help & Support</option>
+                    </select>
+                </div>
+                <div class="form-group">
+                    <label for="threadContent">Content</label>
+                    <textarea id="threadContent" rows="8" required></textarea>
+                </div>
+                <div class="form-actions">
+                    <button type="button" class="btn btn-secondary" id="cancelNewThread">Cancel</button>
+                    <button type="submit" class="btn btn-primary">Create Thread</button>
+                </div>
+            </form>
+        </div>
+    </div>
+
+    <!-- Thread View Modal -->
+    <div class="modal" id="threadModal">
+        <div class="modal-content modal-large">
+            <div class="modal-header">
+                <h2 id="modalThreadTitle"></h2>
+                <button class="modal-close" id="closeThreadModal">&times;</button>
+            </div>
+            <div class="modal-body">
+                <div class="thread-meta">
+                    <span class="thread-author" id="modalThreadAuthor"></span>
+                    <span class="thread-date" id="modalThreadDate"></span>
+                    <span class="thread-category" id="modalThreadCategory"></span>
+                </div>
+                <div class="thread-content" id="modalThreadContent"></div>
+                
+                <div class="replies-section">
+                    <h3>Replies</h3>
+                    <div class="replies-container" id="repliesContainer"></div>
+                    
+                    <div class="reply-form" id="replyForm" style="display: none;">
+                        <h4>Add a Reply</h4>
+                        <form id="newReplyForm">
+                            <textarea id="replyContent" placeholder="Write your reply..." rows="4" required></textarea>
+                            <button type="submit" class="btn btn-primary">Post Reply</button>
+                        </form>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <footer class="footer">
+        <div class="container">
+            <p>&copy; 2024 Ucique. All rights reserved.</p>
+        </div>
+    </footer>
+
+    <script src="js/database.js"></script>
+    <script src="js/auth.js"></script>
+    <script src="js/theme.js"></script>
+    <script src="js/forum.js"></script>
+</body>
+</html>
